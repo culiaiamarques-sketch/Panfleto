@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços Digitais Pro - Verde</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .flyer {
+            width: 1080px;
+            height: 1920px;
+            background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 50%, #81c784 100%);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .geometric-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+        }
+        
+        .shape {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .circle-1 { width: 300px; height: 300px; border-radius: 50%; top: -100px; right: -100px; }
+        .circle-2 { width: 200px; height: 200px; border-radius: 50%; bottom: 200px; left: -50px; }
+        .triangle { width: 0; height: 0; border-left: 150px solid transparent; border-right: 150px solid transparent; border-bottom: 200px solid rgba(255,255,255,0.05); top: 800px; right: 200px; }
+        
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 60px 80px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            font-size: 52px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #ffffff;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
+        }
+        
+        .pro-badge {
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+            color: #2d5a27;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 15px;
+            box-shadow: 0 4px 12px rgba(255,215,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 26px;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .service-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .service-desc {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .academic-section {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 30px 0;
+            border-left: 5px solid #ffd700;
+        }
+        
+        .academic-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+        
+        .academic-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .academic-list li {
+            font-size: 18px;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .academic-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #81c784;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .guarantee-banner {
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+            color: #2d5a27;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(255,215,0,0.3);
+        }
+        
+        .guarantee-text {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .guarantee-sub {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .contact-box {
+            background: rgba(255, 255, 255, 0.95);
+            color: #2d5a27;
+            border-radius: 25px;
+            padding: 45px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .contact-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #2d5a27;
+        }
+        
+        .contact-methods {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .contact-method {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .contact-method-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .contact-method-text {
+            font-size: 16px;
+            font-weight: 600;
+            word-break: break-word;
+        }
+        
+        .payment-badge {
+            background: #4a7c59;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 20px 0;
+            display: inline-block;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #2d5a27, #4a7c59);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin: 25px auto;
+            box-shadow: 0 10px 25px rgba(45,90,39,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 35px rgba(45,90,39,0.5);
+        }
+        
+        .ethics-note {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            font-size: 15px;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .float-icon {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 60px;
+            animation: gentleFloat 8s ease-in-out infinite;
+        }
+        
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+        
+        .float-1 { top: 150px; left: 80px; animation-delay: 0s; }
+        .float-2 { top: 400px; right: 100px; animation-delay: 2s; }
+        .float-3 { top: 700px; left: 120px; animation-delay: 4s; }
+        .float-4 { top: 1000px; right: 150px; animation-delay: 6s; }
+        .float-5 { top: 1300px; left: 90px; animation-delay: 1s; }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <div class="geometric-bg">
+            <div class="shape circle-1"></div>
+            <div class="shape circle-2"></div>
+            <div class="shape triangle"></div>
+        </div>
+        
+        <div class="floating-elements">
+            <div class="float-icon float-1">📚</div>
+            <div class="float-icon float-2">💼</div>
+            <div class="float-icon float-3">✏️</div>
+            <div class="float-icon float-4">🎓</div>
+            <div class="float-icon float-5">💻</div>
+        </div>
+        
+        <div class="content">
+            <div class="header">
+                <h1 class="logo">
+                    Serviços Digitais
+                    <span class="pro-badge">PRO</span>
+                </h1>
+                <p class="tagline">
+                    Transforme os seus documentos em trabalhos de <strong>excelência profissional</strong>
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">💼</span>
+                    <h3 class="service-title">Currículos Profissionais</h3>
+                    <p class="service-desc">PDF & Word | Design moderno e impactante</p>
+                </div>
+                
+                <div class="service-card">
+                    <span class="service-icon">⌨️</span>
+                    <h3 class="service-title">Digitação & Edição</h3>
+                    <p class="service-desc">Correção de textos com qualidade superior</p>
+                </div>
+                
+                <div class="service-card">
+                    <span class="service-icon">📋</span>
+                    <h3 class="service-title">Formatação</h3>
+                    <p class="service-desc">ABNT | APA | MLA | Revisão completa</p>
+                </div>
+                
+                <div class="service-card">
+                    <span class="service-icon">💻</span>
+                    <h3 class="service-title">Apoio Digital</h3>
+                    <p class="service-desc">Soluções tecnológicas personalizadas</p>
+                </div>
+            </div>
+            
+            <div class="academic-section">
+                <h2 class="academic-title">🎓 Apoio Académico Especializado</h2>
+                <ul class="academic-list">
+                    <li>Investigação e estruturação de trabalhos</li>
+                    <li>Projetos de nível básico e médio</li>
+                    <li>Monografias universitárias</li>
+                    <li>Metodologia científica aplicada</li>
+                </ul>
+            </div>
+            
+            <div class="guarantee-banner">
+                <p class="guarantee-text">🚀 ENTREGA RÁPIDA & SIGILO GARANTIDO</p>
+                <p class="guarantee-sub">Qualidade profissional com total confidencialidade</p>
+            </div>
+            
+            <div class="contact-box">
+                <h2 class="contact-title">Contacte-nos Hoje!</h2>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <span class="contact-method-icon">📧</span>
+                        <p class="contact-method-text">servicosdigitaisgraphicos@gmail.com</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <span class="contact-method-icon">📱</span>
+                        <p class="contact-method-text">+258 876212985<br><small>WhatsApp</small></p>
+                    </div>
+                </div>
+                
+                <span class="payment-badge">💳 MBWay | Transferência Bancária</span>
+                
+                <div class="cta-button">
+                    Pedir Orçamento Grátis
+                </div>
+            </div>
+            
+            <div class="ethics-note">
+                <strong>💡 Compromisso Ético:</strong> Promovemos práticas académicas responsáveis. Oferecemos apoio na pesquisa, estruturação, revisão e formatação para que desenvolva competências e produza trabalhos de alta qualidade.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
